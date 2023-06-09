@@ -13,7 +13,7 @@ const siteMetadata = {
   siteLogo: '/static/images/logo.png',
   image: '/static/images/andrew-blase.jpeg',
   socialBanner: '/static/images/twitter-card.png',
-  email: 'blazestudios23@gmail.com',
+  email: '',
   github: 'https://github.com/blazestudios23',
   twitter: '',
   facebook: '',
