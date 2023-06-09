@@ -1,5 +1,5 @@
 ---
-name: Andrew Obrigewitsch
+name: Andrew Blase
 avatar: /static/images/andrew-blase.jpeg
 occupation: Software Engineer
 company: Full Stack Data Solutions
