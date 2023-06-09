@@ -1,6 +1,6 @@
 ---
 name: Andrew Obrigewitsch
-avatar: /static/images/andrew-blase.jpg
+avatar: /static/images/andrew-blase.jpeg
 occupation: Software Engineer
 company: Full Stack Data Solutions
 # email: address@yoursite.com
