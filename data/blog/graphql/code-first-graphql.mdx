@@ -14,7 +14,7 @@ tags:
     'GraphQL best practices',
   ]
 draft: false
-images: ['/static/images/graphql/software_engineer_unleashing_potential_data_graph.png']
+images: ['/static/images/graphql/Developers_collaborating_on_a_GraphQL_API_project.png']
 summary: 'Unravel the power of the data graph in GraphQL and optimize your data retrieval. Discover how the data graph revolutionizes the way you work with data, from schema design to efficient querying techniques.'
 authors: ['default']
 ---
@@ -25,7 +25,7 @@ Imagine a world where developing GraphQL APIs is a breeze, where complexity is t
 
 Picture this: You're working on a complex API, and making a simple change to a database table requires updating multiple files. The codebase feels like a labyrinth, and your development velocity suffers. But fret not, as we dive into the world of code-first GraphQL, Nexus, and Prisma, your API development struggles will become a distant memory.
 
-![Data Graph](/static/images/graphql/data_graph.png)
+![Developers collaborating on a GraphQL API project](/static/images/graphql/Developers_collaborating_on_a_GraphQL_API_project.png)
 
 # Understanding Code-First GraphQL
 
@@ -37,13 +37,51 @@ In the realm of GraphQL development methodologies, code-first GraphQL stands tal
 
 Enter Nexus GraphQL, an open-source library that becomes your trusty companion on this code-first journey. Nexus integrates seamlessly with renowned GraphQL frameworks like Apollo GraphQL, empowering you with a declarative API to define your GraphQL schema and types.
 
-With Nexus, crafting your GraphQL types, queries, and mutations becomes a joyful experience. Bid farewell to boilerplate code, as Nexus handles the generation of the necessary schema and resolvers. The result? A modular and organized codebase that facilitates seamless updates and shields you from the chaos of API maintenance.
+With Nexus, crafting your GraphQL types, queries, and mutations becomes a joyful experience. Bid farewell to boilerplate code, as Nexus handles the generation of the necessary schema and types. The result? A modular and organized codebase that facilitates seamless updates and shields you from the chaos of API maintenance.
 
 ## Enhancing Database Management with Prisma ORM
 
-But wait, there's more. Introducing Prisma ORM, the missing piece of the puzzle. Prisma is a modern database toolkit that revolutionizes the way you interact with databases. Seamlessly integrating with Nexus GraphQL, Prisma simplifies database management and unleashes a new level of efficiency.
+Managing database migrations becomes a breeze with Prisma's intuitive schema definition language. The simplicity and readability of this language make updating the database schema a straightforward process.
 
-By leveraging Prisma, you can define your database schema using the intuitive Prisma schema language. Behind the scenes, Prisma generates the corresponding database schema and equips you with a powerful query API that abstracts away the complexities of database operations. The result? Simplified database management and a laser focus on building robust, performant APIs.
+To update the database schema, simply add the desired changes to the Prisma schema file. Whether it's adding new tables, modifying existing fields, or defining relationships, the process is as simple as updating the schema definition. With just a few lines of code, you can express your desired changes.
+
+Once the changes are made, generating a migration becomes effortless. Prisma's powerful CLI tools analyze the differences between the current schema and the updated schema, generating a migration script that captures the necessary database changes. This migration script ensures that the database schema seamlessly aligns with the new schema definition.
+
+Prisma handles the intricate details of database migration management, making the process smooth and error-free. Whether you're working with a small-scale project or a large-scale enterprise application, Prisma's database migration capabilities streamline the process, saving you time and effort.
+
+With Prisma's schema definition language and automated migration generation, you can focus on designing and evolving your database schema without the headaches typically associated with manual database management. Say goodbye to tedious SQL scripts and complex migration workflows—Prisma simplifies the entire process.
+
+Embrace the power of Prisma ORM and its seamless integration with the code-first GraphQL approach. Experience the joy of effortlessly managing your database schema and migrations while building powerful and scalable GraphQL APIs.
+
+Example Prisma Schema:
+
+```JSON
+generator prisma_client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+  ROOT
+}
+
+model User {
+  id        String   @default(cuid()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  email     String   @unique
+  username  String
+  password  String
+  role      Role     @default(USER)
+  todos     Todo[]
+}
+```
 
 ## Autogenerated Types and Schema: Simplifying API Complexity
 
@@ -53,13 +91,57 @@ Adopting the code-first approach, you can add or modify fields in your applicati
 
 ## Accelerating Development and Elevating Developer Experience
 
-Enough theory, let's talk results. By embracing code-first GraphQL, Nexus, and Prisma, you unlock the true potential of API development. You'll witness a remarkable acceleration in your development process, delivering APIs with unrivaled speed and precision.
+By embracing code-first GraphQL, Nexus, and Prisma, you unlock the true potential of API development. You'll witness a remarkable acceleration in your development process, delivering APIs with unrivaled speed and precision.
 
 The journey doesn't end there. Code-first GraphQL, Nexus, and Prisma enhance the developer experience in profound ways. With hot-reloading, comprehensive error handling, and advanced debugging capabilities, you'll find yourself in a developer utopia. Collaboration among teams becomes seamless, allowing for increased productivity and sparking the flames of innovation.
 
 ## Real-World Use Cases and Success Stories
 
-Don't just take our word for it. Giants in the industry have embraced the power of code-first GraphQL, Nexus, and Prisma to fuel their success. Companies like [Company X] and [Company Y] have witnessed a paradigm shift in their API development velocity, empowering their teams to achieve more and deliver exceptional products.
+Here's an exmaple of what a code first GraphQL service looks like, when can be seen in this [repository](https://github.com/arbytez/boilerplate-nexus-prisma-apollo-graphql-express):
+
+This is an exmaple of a Nexus type, which is resolved by Prisma and autogeneartes the GraphQL Schema.
+
+```TypeScript
+export const Todo = objectType({
+  name: 'Todo',
+  definition(t) {
+    t.model.id();
+    t.model.createdAt();
+    t.model.updatedAt();
+    t.model.content();
+    t.model.done();
+    t.model.user();
+  },
+});
+```
+
+Example of GraphQL queries using Prisma and Nexus with pagination, ordering and filtering:
+
+```TypeScript
+export const todoNexusQuery = extendType({
+  type: 'Query',
+  definition(t) {
+    t.crud.todo();
+    t.crud.todos({ filtering: true, ordering: true, pagination: true });
+  },
+});
+```
+
+Example of Mutatins:
+
+```TypeScript
+export const todoNexusMutation = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.crud.createOneTodo();
+    t.crud.updateOneTodo();
+    t.crud.upsertOneTodo();
+    t.crud.deleteOneTodo();
+    t.crud.updateManyTodo();
+    t.crud.deleteManyTodo();
+  },
+});
+```
 
 # Conclusion
 
@@ -69,8 +151,8 @@ As we conclude this transformative journey, remember that the power to simplify 
 
 To embark on your own adventure, delve into the world of code-first GraphQL, Nexus, and Prisma. Visit the following links to learn more:
 
-- **Nexus GraphQL:** Link to Nexus GraphQL
+- **[Nexus GraphQL](https://nexusjs.org/docs/)**
 - **[Apollo GraphQL](https://www.apollographql.com)**
-- **Prisma ORM:** Link to Prisma ORM
+- **[Prisma ORM](https://www.prisma.io)**
 
 Take the leap, simplify your API development, and witness the remarkable transformation of your GraphQL experiences. Let code-first GraphQL, Nexus, and Prisma be your guiding light on this exciting journey of innovation and productivity.
