@@ -46,6 +46,72 @@ Let's venture into a real-world story that vividly demonstrates the impact of gr
 
 Recognizing the potential of graph theory, an experienced engineer intervened and introduced a critical change. Instead of resolving subtypes within the query, they shifted the responsibility to the types themselves. This seemingly minor adjustment unleashed a wave of transformation. Code became cleaner, more self-contained, and easily maintainable. Moreover, this change enabled the underlying ORM (Object-Relational Mapping) to construct more efficient queries, leading to significant performance improvements.
 
+Simplified example of how the original code looked:
+
+```TypeScript
+const resolvers = {
+  Query: {
+    user(parent, args, contextValue, info) {
+      const user = await prisma.user.findUnique({
+        where: {
+          email: args.where.email,
+        },
+      });
+      const products = await prisma.product.findMany({
+        where: {
+          userId: user.id,
+        },
+      });
+      const companies = await prisma.company.findMany({
+        where: {
+          and: products.map...,
+        },
+      });
+
+      ...
+      return ...
+    },
+  },
+};
+```
+
+Code that uses the Graph: There is a more efficient way of doing this with a code-first approach, which is covered in this [article:](https://fullstackdatasolutions.com/blog/graphql/code-first-graphql):
+
+```TypeScript
+const resolvers = {
+  Query: {
+    user(parent, args, context, info) {
+      return await context.prisma.user.findUnique({
+        where: {
+          email: args.where.email,
+        },
+      });
+    },
+  },
+  user: {
+    products(parent, args, context, info) {
+      return await prisma.product.findMany({
+        where: {
+          user: { id: parent.userId },
+        },
+      });
+    },
+  },
+  product: {
+    companyID: string,
+    company(parent, args, context, info) {
+      return await prisma.company.findOne({
+        where: {
+          id: parent.companyID,
+        },
+      });
+    },
+  },
+};
+```
+
+This will be much more efficient as a query to get products will automatically resolve all companies no matter the parent of the products.
+
 ## Practical Implications: Leveraging Graph Theory in GraphQL API Development
 
 The real-world story highlights just one instance where graph theory guided the transformation of a GraphQL API. However, the practical implications extend far beyond. By understanding the fundamental principles of graph theory, developers can make informed decisions in GraphQL API design, optimize query resolution, and build more efficient and maintainable code.
