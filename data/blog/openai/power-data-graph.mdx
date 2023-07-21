@@ -1,0 +1,149 @@
+---
+title: 'GraphQL and Large Language Models The Perfect Union'
+date: '2023-07-20'
+tags: ['graphql', 'Large Language Models (LLMs)', 'OpenAI', 'LangChain', 'Wundergraph']
+draft: false
+images: ['/static/images/graphql/a_man_sitting_in_front_of_a_table.png']
+summary: 'Explore the powerful synergy between GraphQL and Large Language Models like OpenAI in this comprehensive guide. Learn how integrating these technologies can revolutionize your software engineering projects, with practical examples from LangChain and Wundergraph.'
+authors: ['default']
+---
+
+# The Perfect Union: Exploring the Synergy between GraphQL and Large Language Models
+
+## Introduction
+
+In the dynamic world of software engineering, two technologies have emerged as transformative: GraphQL and Large Language Models (LLMs) like OpenAI. While each has revolutionized how we handle data and build applications, their combined potential is truly remarkable. This blog post will delve into the perfect union between GraphQL and LLMs, and how this synergy can benefit software engineers.
+
+![GraphQL Query](/static/images/graphql/a_man_sitting_in_front_of_a_table.png)
+
+## Understanding the Basics
+
+Before we delve into the heart of the matter, let's demystify the basics. LLMs, such as OpenAI, are powerful tools that can understand and generate human-like text. They can answer questions, write essays, summarize texts, and even generate code. On the other hand, GraphQL is a query language for APIs and a runtime for executing those queries. It allows clients to request exactly what they need, making it easier to evolve APIs over time.
+
+Two tools that exemplify the integration of these technologies are LangChain and Wundergraph. LangChain offers a GraphQL plugin, while Wundergraph provides an OpenAI integration. Both tools showcase how GraphQL and LLMs can be combined to create powerful solutions.
+
+## The Synergy between GraphQL and LLMs
+
+GraphQL and LLMs complement each other in several ways. Both technologies use graphs, which are structures that model the relationships between entities. In the context of LLMs, graphs can represent the connections between different concepts in a text. In GraphQL, graphs represent the relationships between different types of data.
+
+One of the key synergies between GraphQL and LLMs is the ability to feed data from GraphQL APIs into LLMs. This allows LLMs to generate responses based on precise, up-to-date data. Conversely, LLMs can be added to federated GraphQL APIs, enriching the data graph with AI-generated content.
+
+## LangChain: A Case Study
+
+LangChain provides a shining example of how GraphQL can be integrated with other technologies. Its GraphQL plugin allows users to consume GraphQL APIs with ease. This means that you can request exactly what you need from an API, reducing over-fetching and under-fetching of data.
+
+The LangChain GraphQL plugin is easy to use. With just a few lines of code, you can connect to a GraphQL API and start making queries. This simplicity, combined with the power of GraphQL, makes LangChain a valuable tool for any software engineer. For more information and examples, check out the [LangChain documentation](https://python.langchain.com/docs/modules/agents/tools/integrations/graphql).
+
+Code Example:
+
+```python
+from langchain import OpenAI
+from langchain.agents import load_tools, initialize_agent, AgentType
+from langchain.utilities import GraphQLAPIWrapper
+
+llm = OpenAI(temperature=0)
+
+tools = load_tools(
+    ["graphql"],
+    graphql_endpoint="https://swapi-graphql.netlify.app/.netlify/functions/index",
+)
+
+agent = initialize_agent(
+    tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True
+)
+
+graphql_fields = """allFilms {
+    films {
+      title
+      director
+      releaseDate
+      speciesConnection {
+        species {
+          name
+          classification
+          homeworld {
+            name
+          }
+        }
+      }
+    }
+  }
+
+"""
+
+suffix = "Search for the titles of all the stawars films stored in the graphql database that has this schema "
+
+
+agent.run(suffix + graphql_fields)
+```
+
+## Wundergraph: A Case Study
+
+Wundergraph, on the other hand, showcases how OpenAI can be integrated into a GraphQL API. With Wundergraph's OpenAI integration, you can include AI-generated responses in your data graph. This opens up a world of possibilities, from AI-powered chatbots to dynamic content generation.
+
+While Wundergraph requires you to use their library and architecture, it serves as a good example of how OpenAI can be implemented into a GraphQL API. For more details and examples, visit the [Wundergraph documentation](https://docs.wundergraph.com/docs/openai).
+
+Wundergraph Code Example:
+
+```TypeScript
+
+// .wundergraph/operations/openai/weather.ts
+import { createOperation, z } from '../../generated/wundergraph.factory';
+
+export default createOperation.query({
+  input: z.object({
+    country: z.string(),
+  }),
+  description: 'This operation returns the weather of the capital of the given country',
+  handler: async ({ input, openAI, log }) => {
+    const parsed = await openAI.parseUserInput({
+      userInput: input.country,
+      schema: z.object({
+        country: z.string().nonempty(),
+      }),
+    });
+
+    const agent = openAI.createAgent({
+      functions: [{ name: 'CountryByCode' }, { name: 'weather/GetCityByName' }],
+      structuredOutputSchema: z.object({
+        city: z.string(),
+        country: z.string(),
+        temperature: z.number(),
+      }),
+    });
+
+    const out = await agent.execWithPrompt({
+      prompt: `What's the weather like in the capital of ${parsed.country}?`,
+      debug: true,
+    });
+
+    return out;
+  },
+});
+
+```
+
+## The Impact on Software Engineering
+
+The combination of GraphQL and LLMs has significant implications for software engineering. By integrating these technologies, developers can create more dynamic, intelligent, and efficient applications. Whether you're already using GraphQL or OpenAI in your projects, or you're planning to do so, understanding the synergy between these technologies can give you a competitive edge.
+
+## Conclusion
+
+In conclusion, the marriage between GraphQL and Large Language Models is indeed a match made in heaven. The synergy between these technologies unlocks new possibilities, from smarter APIs to more dynamic applications. As software engineers, it's our job to stay on top of these trends and leverage them to build better solutions. So, why not explore the union of GraphQL and LLMs today? You might just discover a new way to revolutionize your projects.
+
+## Further Reading
+
+For those interested in delving deeper into the practical applications of GraphQL and Large Language Models, here are some resources that might be helpful:
+
+1. [WunderGraph's website](https://www.wundergraph.com/)
+2. [LangChains website](https://langchains.com/)
+3. [GraphQL.org](https://graphql.org/)
+4. [How To GraphQL](https://www.howtographql.com/)
+5. [Apollo GraphQL](https://www.apollographql.com/)
+6. [Practical GraphQL: Become a GraphQL Ninja](https://www.udemy.com/course/practical-graphql-become-a-graphql-ninja/)
+7. [GitHub GraphQL API](https://docs.github.com/en/graphql)
+8. [The Guild Blog](https://the-guild.dev/blog)
+
+Remember, the implementation of GraphQL with Large Language Models will depend on your specific use case and the programming language you are using. These resources should provide a good starting point. Happy exploring!
+
+<BlogNewsletterForm title="Get twice as much done with a fifth of the code." />
