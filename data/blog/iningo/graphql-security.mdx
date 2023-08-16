@@ -10,9 +10,11 @@ authors: ['default']
 
 ## Introduction
 
-In the rapidly evolving world of software development, GraphQL has emerged as a powerful query language for APIs. But when one talks about APIs one must also talk about security and error handling. Enter Inigo, a server-agnostic GraphQL platform designed to simplify these complex tasks.
+Starting with GraphQL is easy; there are GraphQL implementations in any programming language you can think of. Some communities are bigger and more active than others, leaving weaknesses based on your choice of implementation. Inigo levels up the playing field.
 
-This blog post focuses on Inigo's innovative security and error handling features. Whether you're a seasoned tech expert or new to GraphQL, this guide will provide valuable insights into Inigo's offerings.
+In the rapidly evolving world of software development, GraphQL has emerged as a powerful query language for APIs. But with great power comes great responsibility, especially when it comes to security and error handling. Enter Inigo, a server-agnostic GraphQL platform designed to simplify these complex tasks.
+
+This blog post focuses on Inigo's innovative security and error handling features, tailored for managers of teams handling GraphQL services. Whether you're a seasoned tech expert or new to GraphQL, this informative and engaging guide will provide valuable insights into Inigo's offerings.
 
 ![Man using inigo to secure a graphql api](/static/images/inigo/man_useing_inigo_secured_graph_api.png)
 
@@ -34,6 +36,33 @@ Access control is at the heart of Inigo's security model. With directives, role 
 
 From handling login APIs to protecting against brute force attacks, Inigo's advanced security techniques provide an extra layer of protection. Features like IP filtering and response filtering add to Inigo's comprehensive security toolkit.
 
+![Inigo Security](/static/images/inigo/inigo_security.png)
+
+## Addressing the Lack of Web Application Firewalls in GraphQL
+
+One of the challenges in working with GraphQL is the lack of native support for Web Application Firewalls (WAFs). Traditional WAFs are designed to protect against common web application threats, but they often fall short when it comes to the unique structure and behavior of GraphQL queries.
+
+### The Challenge with GraphQL and WAFs
+
+GraphQL's flexibility in allowing clients to request exactly what they need can sometimes be a double-edged sword. This flexibility makes it difficult for traditional WAFs to analyze and filter malicious queries, leaving potential vulnerabilities.
+
+### Inigo's Solution to the WAF Challenge
+
+Inigo addresses this challenge by implementing specialized security measures tailored to GraphQL's unique characteristics:
+
+- **Query Analysis and Protection**: Inigo analyzes queries to detect and block potential threats, providing a level of protection that traditional WAFs may miss.
+- **Rate Limiting and Query Control**: By controlling the size and frequency of queries, Inigo prevents abuse and ensures that the system remains stable and secure.
+- **Custom Security Rules**: Inigo allows for the creation of custom security rules that align with GraphQL's structure, offering more precise and effective protection.
+- **Integration with Existing WAFs**: Inigo can also work in conjunction with existing WAFs, enhancing their effectiveness when it comes to handling GraphQL queries.
+
+![Inigo Graphql Attack Surface](/static/images/inigo/inigo_graphql_attack_surface.webp)
+
+### Ensuring Comprehensive Security
+
+Inigo's approach to handling the lack of WAFs in GraphQL ensures comprehensive security without sacrificing the flexibility and power that GraphQL offers. By understanding the unique challenges of GraphQL and creating solutions specifically designed to address them, Inigo provides a robust security framework that fills the gap left by traditional WAFs.
+
+![Inigo Security Scope](/static/images/inigo/inigo_security_scope.png)
+
 ## Error Handling in Inigo
 
 ### Basics of Error Handling
@@ -46,7 +75,9 @@ Inigo's approach to error handling goes beyond the basics. With severity levels,
 
 ### Ownership and Responsibility
 
-Who owns an error? Inigo helps you find the owner of a particular error, associating it with a user or team. This ownership model enhances accountability and helps in identifying potential issues.
+Who owns an error? Inigo helps you find the owner of a particular error, associating it with a user or team. This ownership model enhances accountability and helps in identifying potential issues. Finding the owner is even more challenging in a federated multi sub-graph environment, but Inigo's advanced features simplify this complex task.
+
+![Inigo Dashboard](/static/images/inigo/inigo_dashboard.png)
 
 ## Making Security and Error Handling Accessible
 
@@ -57,6 +88,10 @@ Inigo's user-friendly interfaces, CLI, and configuration options make complex se
 ### Real-World Applications and Use Cases
 
 Inigo's features are not just theoretical; they are applied in real-world scenarios. From handling nullable fields in SQL databases to tracing intermittent errors, Inigo's analytics and transparency tools provide valuable insights.
+
+### Audit-Trail for Compliance
+
+Inigo also offers an audit-trail feature, essential for compliance with various regulatory standards. This audit-trail functionality ensures that all actions and changes are logged and traceable, providing an additional layer of security and accountability. It's a vital tool for organizations that need to adhere to specific legal and regulatory requirements.
 
 ## Conclusion
 
