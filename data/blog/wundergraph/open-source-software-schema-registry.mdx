@@ -1,0 +1,130 @@
+---
+title: 'open source software Schema registry and checks'
+date: '2023-09-16'
+tags: ['graphql', 'Cosmo', 'Wundergraph', 'Schema registry', 'Schema checks']
+draft: false
+images: ['/static/images/wundergraph/open_source_schema_check.png']
+summary: "Explore the revolutionary world of WunderGraph Cosmo Open Federation in our latest blog post. Dive deep into the functionalities of GraphQL and Apollo Federations v1 and v2, and discover the powerhouse tools behind Cosmo. Whether you're a developer or a CTO, this comprehensive guide offers insights into the seamless GraphQL integrations facilitated by Cosmo, steering you towards a future of optimized performances and collaborative growth in the GraphQL ecosystem."
+authors: ['default']
+---
+
+## Introduction
+
+Hello, tech enthusiasts, managers steering GraphQL services, and visionary CTOs! Welcome to a space where we explore the dynamic world of GraphQL APIs through the lens of Cosmo OSS. Whether you are a seasoned tech guru or just beginning to dip your toes in the vast ocean of GraphQL, this blog post promises to be your guiding star. Let's embark on this journey to explore the revolutionary features of Cosmo OSS Schema Registry and Checks, a tool designed to streamline your GraphQL management experience. So, let's dive in!
+
+![Open Source Schema Checks](/static/images/wundergraph/open_source_schema_check.png)
+
+## Understanding the Basics
+
+Before we dive deeper, let's build a strong foundation by understanding some core concepts:
+
+- **GraphQL APIs**: In the simplest terms, GraphQL is a query language for your API. It provides a more efficient, powerful, and flexible alternative to the traditional REST API. Curious to learn more? Check out this [comprehensive guide](https://graphql.org).
+- **Schema Registry**: Imagine having a centralized library that houses all the blueprints (schemas) of your federated graphs. That's precisely what a schema registry does! It is a critical component in managing federated graphs effectively. Dive deeper into the fascinating world of schema registries [here](https://cosmo-docs.wundergraph.com/studio/schema-registry).
+- **Schema Checks**: Now, having a library is great, but ensuring that all the books (schemas) are in good condition is essential. Schema checks play the role of a meticulous librarian, ensuring the integrity of your graph's schema remains intact. Learn more about the vital role of schema checks [here](https://cosmo-docs.wundergraph.com/studio/schema-checks).
+
+With these basics in place, you are well-equipped to explore the dynamic functionalities of Cosmo OSS. Stay tuned as we reveal the features that make Cosmo OSS a game-changer!
+
+## Deep Dive into Cosmo OSS
+
+As we venture deeper, let's explore the remarkable features of Cosmo OSS that are fundamental in optimizing GraphQL service management:
+
+### Schema Registry
+
+Dive into the centralized hub that houses all your federated graph schemas. Here, you can:
+
+- **View and Manage Federated Graph Schema**: Get a comprehensive view of your federated graph's schema, a composition of all subgraph schemas. [Learn more](https://cosmo-docs.wundergraph.com/studio/schema-registry)
+- **Subgraph Schemas**: Manage individual schemas of all subgraphs seamlessly.
+- **Schema Utilities**: Copy or download the schema as a GraphQL file, facilitating easy sharing and editing.
+- **Schema Update Tracking**: Stay updated with the latest changes, ensuring you are always working with the most recent version.
+
+![schema registry](/static/images/wundergraph/schema_registry.png)
+
+### Schema Checks
+
+Ensuring the robustness of your schemas is a breeze with Cosmo OSS schema checks. Here, you can:
+
+- **Checks History**: Maintain a history of all schema checks performed, a vital tool in ensuring the integrity of your graph's schema. [Learn more](https://cosmo-docs.wundergraph.com/studio/schema-checks)
+- **Checks Table**: Get a detailed view of all the checks performed, helping you avoid any breaking changes effectively.
+- **Proposed Schema**: View the exact schema that was proposed, understanding the changes being proposed when the check was performed.
+
+![schema check](/static/images/wundergraph/schema_check.png)
+
+## Cosmo in Action
+
+The Cosmo Architecture is the backbone of the Cosmo OSS, designed to streamline the management of GraphQL services. Here we break down its core components and functionalities:
+
+### Federated Graphs and Subgraphs
+
+In the realm of Cosmo, federated graphs play a pivotal role. They are a unified view created by bringing together various subgraphs, each representing a portion of the graph and owned by different teams. This federated approach allows for a more organized and efficient management of complex GraphQL architectures. Subgraphs, on the other hand, are individual graphs that come together to form a federated graph, facilitating a collaborative yet autonomous working environment for different teams.
+
+### Router and Control Plane
+
+The router and control plane are central to the Cosmo architecture. The router directs your queries to the appropriate services in a GraphQL architecture, ensuring a smooth and efficient data retrieval process. It is designed to automatically pick up changes and reconfigure itself to serve the latest configuration to the user, promoting a dynamic and responsive system.
+
+The control plane, on the other hand, is the central entity managing and orchestrating the various components in the Cosmo ecosystem. It oversees the functionalities of different commands such as "publish" and "check" in managing the graph schema, including the prevention of breaking changes and ensuring the federated graph remains valid.
+
+### Dashboard
+
+The dashboard is a user-friendly interface that provides insights through metrics and analytics, offering a comprehensive view of the system's performance and facilitating informed decision-making.
+
+This architecture is crafted to offer a fully integrated solution, eliminating the reliance on third-party applications and promising a streamlined experience in managing GraphQL services.
+
+Spot for a photo: A diagram illustrating the Cosmo Architecture, highlighting the federated graphs, subgraphs, router, control plane, and dashboard.
+
+![Cosmo Dashboard](/static/images/wundergraph/analyrics.png)
+
+### Error Fixing with OpenAI
+
+In the dynamic environment of GraphQL service management, encountering errors is a common occurrence. Cosmo OSS takes a revolutionary step in error management by integrating with OpenAI to facilitate error fixing.
+
+#### OpenAI Integration
+
+Cosmo leverages the power of OpenAI to suggest potential fixes for errors encountered during the schema development process. This integration is designed to be a game-changer in error handling, promising to significantly reduce the time and effort involved in troubleshooting errors.
+
+During the schema development process, developers can encounter various issues that can potentially lead to breaking changes in the graph. The OpenAI integration steps in here, analyzing the errors and suggesting fixes that can help maintain the integrity of the graph's schema, ensuring a smooth development process.
+
+#### Anticipated Developments
+
+Looking ahead, this feature holds the promise of evolving to offer even more refined solutions, leveraging the continually advancing capabilities of OpenAI to provide intelligent and efficient error management solutions.
+
+## Cosmo Benchmarks
+
+Cosmo has incredible benchmarks that stand testimony to its efficiency, up to 10 times faster than competing products. See [Cosmo benchmarks](https://github.com/wundergraph/federation-benchmarks) to get a better understanding of the performance and capabilities of Cosmo OSS.
+
+![Cosmo Benchmarks](/static/images/wundergraph/benchmarks.png)
+
+## Conclusion
+
+As we wrap up our deep dive into the Cosmo OSS ecosystem, it is clear that we are standing on the threshold of a transformative era in GraphQL service management. Through the analytical lens of a software engineer, one can appreciate the robust architecture and forward-thinking integrations that Cosmo OSS brings to the table.
+
+We dissected the intricate Cosmo architecture, a framework that promises to streamline the complex landscape of GraphQL services, offering a centralized, efficient, and intelligent solution to manage federated graphs and subgraphs. The router and control plane emerge as the nerve center of this ecosystem, orchestrating seamless interactions and facilitating dynamic responses to user configurations.
+
+The integration with OpenAI stands as a testimony to Cosmo's commitment to innovation, promising a future where error handling is not just automated but intelligent, leveraging AI to offer precise and efficient solutions to complex problems encountered during schema development.
+
+As developers and tech enthusiasts, we can appreciate the foresight embedded in Cosmo's design, a tool that is not just responsive to the current needs but is geared to evolve, to integrate, and to lead in the rapidly advancing tech landscape. It is a tool crafted with a deep understanding of the developer's ecosystem, offering functionalities that speak to both the novice and the expert, promising a user experience that is enriched with insights, guided by intelligence, and driven by efficiency.
+
+As we step into the future with Cosmo OSS, I invite you to delve deeper, to explore its rich feature set, and to be a part of a community that is not just using a tool but is shaping the future of GraphQL service management. Visit the [official website](https://cosmo-docs.wundergraph.com/) to start your journey into a world of intelligent and efficient GraphQL service management. I encourage you to share your insights, experiences, and queries in the comments section below, fostering a community of learning and innovation.
+
+## Glossary
+
+- **Federated Graphs**: A unified view created by bringing together various subgraphs.
+- **Subgraphs**: Individual graphs that come together to form a federated graph.
+- **Schema**: The blueprint that defines the structure of your data in GraphQL.
+- **Router**: A tool that directs your queries to the appropriate services in a GraphQL architecture.
+- **Control Plane**: The central entity managing and orchestrating the various components in the Cosmo ecosystem.
+
+## References
+
+For the curious minds eager to dive deeper, here are the resources that fueled this blog:
+
+- [Cosmo OSS Schema Registry](https://cosmo-docs.wundergraph.com/studio/schema-registry)
+- [Cosmo OSS Schema Checks](https://cosmo-docs.wundergraph.com/studio/schema-checks)
+- [WunderGraph Benchmarks](https://github.com/wundergraph/federation-benchmarks)
+
+## Call to Action
+
+I invite you to explore the [official website](https://cosmo-docs.wundergraph.com/) and learn more about Cosmo.
+
+Engage with the community, share your insights, and foster discussions that drive innovation. The comments section below is your space to discuss, to query, and to learn. Let's foster a community where knowledge meets experience, where questions meet answers, and where challenges meet solutions.
+
+<BlogNewsletterForm title="Get twice as much done with a fifth of the code." />
