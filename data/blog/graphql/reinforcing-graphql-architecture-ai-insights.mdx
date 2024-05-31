@@ -36,13 +36,13 @@ Example Rule Configuration:
 # Rule: No Hardcoded Secrets
 - Description: Do not include hardcoded secrets in your code.
 - Bad Example: 
-    ```javascript
+    '''javascript
     const apiKey = '12345';
-    ```
+    '''
 - Good Example:
-    ```javascript
+    '''javascript
     const apiKey = process.env.API_KEY;
-    ```
+    ''''
 ```
 
 ![Diagram of a federated GraphQL architecture](/static/images/graphql/software_engineer_team_perplexed.png)
