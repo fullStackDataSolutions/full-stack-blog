@@ -30,11 +30,11 @@ Traditional methods of schema validation and client-server coordination involve 
 
 Greg Wardwell from Wayfair presented a proof of concept (POC) that showcased AI's capability to enhance the schema design process for graph applications. The POC demonstrated how AI can mock schema designs, allowing developers to identify potential issues early in the design phase. This proactive approach not only accelerates schema validation but also facilitates parallel development of client and subgraph implementations, ensuring a smoother and more efficient workflow.
 
-![AI-Powered Schema Design](/static/images/graphql/ai_powered_schema_design_database_graphql_schema.png)
-
 ## Implementation Strategies
 
 Wardwell's implementation strategy leverages Apollo's schema proposals and the router lifecycle to integrate AI into the schema validation process. By utilizing coprocessors, AI can intercept subgraph requests, generate mock data, and return annotated responses. This method simplifies the mocking process and reduces the dependency on fully implemented subgraphs during the initial stages of development.
+
+![AI-Powered Schema Design](/static/images/graphql/ai_powered_schema_design_database_graphql_schema.png)
 
 ### Key Steps in Implementation:
 
@@ -49,7 +49,6 @@ Wardwell's implementation strategy leverages Apollo's schema proposals and the r
 3. Reduced Errors: AI minimizes human error by providing consistent and accurate mock data based on schema proposals.
 4. Cost-Effective: While the initial setup involves some costs, the long-term savings from reduced development time and errors make it a worthwhile investment.
 
-![AI-Powered Implementation Strategies](/static/images/graphql/schema_design_table_laptop_plans.png)
 
 ## Challenges and Future Directions
 
@@ -66,6 +65,8 @@ Despite its advantages, AI-powered mocking comes with its own set of challenges.
 - Enhanced Context: Providing additional context to the AI for more accurate data generation.
 - Layered Mocking: Combining AI-generated data with actual subgraph requests to fill in gaps and improve accuracy.
 - Caching: Implementing caching mechanisms to store and reuse validated data, reducing the load on AI and improving response times.
+
+![AI-Powered Implementation Strategies](/static/images/graphql/schema_design_table_laptop_plans.png)
 
 ## Case Study: Wayfair's Approach
 
