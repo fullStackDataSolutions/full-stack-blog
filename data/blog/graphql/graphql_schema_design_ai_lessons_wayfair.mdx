@@ -1,5 +1,5 @@
 ---
-title: 'Transforming GraphQL Schema Design with AI: Lessons from Wayfair'
+title: 'Transforming GraphQL Schema Design with AI'
 date: '2024-06-07'
 tags:
   [
@@ -28,11 +28,11 @@ Traditional methods of schema validation and client-server coordination involve 
 
 ## AI-Powered Schema Design
 
-Greg Wardwell from Wayfair presented a proof of concept (POC) that showcased AI's capability to enhance the schema design process for graph applications. The POC demonstrated how AI can mock schema designs, allowing developers to identify potential issues early in the design phase. This proactive approach not only accelerates schema validation but also facilitates parallel development of client and subgraph implementations, ensuring a smoother and more efficient workflow.
+A proof of concept (POC) was presented that showcased AI's capability to enhance the schema design process for graph applications. The POC demonstrated how AI can mock schema designs, allowing developers to identify potential issues early in the design phase. This proactive approach not only accelerates schema validation but also facilitates parallel development of client and subgraph implementations, ensuring a smoother and more efficient workflow.
 
 ## Implementation Strategies
 
-Wardwell's implementation strategy leverages Apollo's schema proposals and the router lifecycle to integrate AI into the schema validation process. By utilizing coprocessors, AI can intercept subgraph requests, generate mock data, and return annotated responses. This method simplifies the mocking process and reduces the dependency on fully implemented subgraphs during the initial stages of development.
+The implementation strategy leverages Apollo's schema proposals and the router lifecycle to integrate AI into the schema validation process. By utilizing coprocessors, AI can intercept subgraph requests, generate mock data, and return annotated responses. This method simplifies the mocking process and reduces the dependency on fully implemented subgraphs during the initial stages of development.
 
 ![AI-Powered Schema Design](/static/images/graphql/ai_powered_schema_design_database_graphql_schema.png)
 
@@ -52,7 +52,7 @@ Wardwell's implementation strategy leverages Apollo's schema proposals and the r
 
 ## Challenges and Future Directions
 
-Despite its advantages, AI-powered mocking comes with its own set of challenges. Ensuring type safety and consistent data validation are critical aspects that require ongoing improvement. Wardwell suggested using tools like Zod schema design to validate data and handle custom scalars effectively. Future developments will focus on enhancing the system's ability to provide additional context and improving the integration of AI-generated data with actual subgraph requests.
+Despite its advantages, AI-powered mocking comes with its own set of challenges. Ensuring type safety and consistent data validation are critical aspects that require ongoing improvement. It was suggested using tools like Zod schema design to validate data and handle custom scalars effectively. Future developments will focus on enhancing the system's ability to provide additional context and improving the integration of AI-generated data with actual subgraph requests.
 
 ### Key Challenges:
 
@@ -68,9 +68,9 @@ Despite its advantages, AI-powered mocking comes with its own set of challenges.
 
 ![AI-Powered Implementation Strategies](/static/images/graphql/schema_design_table_laptop_plans.png)
 
-## Case Study: Wayfair's Approach
+## Case Study
 
-During the meetup, Wardwell provided a detailed example of how Wayfair implemented AI-powered mocking in their development process. By integrating Apollo's schema proposals and utilizing coprocessors, Wayfair was able to create a flexible and efficient system for mocking GraphQL APIs. This approach allowed them to test and validate schemas quickly, reducing development time and improving the overall quality of their applications.
+During the meetup, the presentor provided a detailed example of how Wayfair implemented AI-powered mocking in their development process. By integrating Apollo's schema proposals and utilizing coprocessors, Wayfair was able to create a flexible and efficient system for mocking GraphQL APIs. This approach allowed them to test and validate schemas quickly, reducing development time and improving the overall quality of their applications.
 
 ### Implementation Example:
 
@@ -82,11 +82,5 @@ During the meetup, Wardwell provided a detailed example of how Wayfair implement
 
 The POC for mocking GraphQL APIs with AI, as presented at the Graph Champs Meetup, offers a promising solution to many of the challenges faced in schema validation and development. By integrating AI into the development workflow, teams can achieve faster, more accurate results, ultimately leading to more efficient and reliable applications.
 
-### Featured Speaker
-
-Greg Wardwell, Staff Engineer at Wayfair
-
-### Resources
-[GraphQL Mock Router on GitHub](https://github.com/gwardwell/graphql-mock-router)
 
 <BlogNewsletterForm title="Get twice as much done with a fifth of the code." />
