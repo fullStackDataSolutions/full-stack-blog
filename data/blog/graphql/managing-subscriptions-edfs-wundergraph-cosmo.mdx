@@ -11,22 +11,29 @@ authors: ['default']
 ## Introduction
 Implementing real-time subscriptions in GraphQL, especially in a federated environment, can be quite challenging for developers. Common issues include scalability concerns, increased complexity in distributed systems, and difficulties in maintaining consistent performance across multiple services. These challenges often lead to increased development time, potential system instabilities, and limitations in real-time capabilities.
 
-Enter WunderGraph Cosmo, a groundbreaking solution that addresses these pain points head-on. By introducing Event-Driven Federated Subscriptions (EDFS), WunderGraph Cosmo has revolutionized the way developers handle real-time data in GraphQL federations. This innovative approach not only simplifies the implementation of subscriptions but also resolves many of the common problems associated with traditional methods.
+WunderGraph Cosmo has intruduced a groundbreaking solution that addresses these pain points head-on. With Event-Driven Federated Subscriptions (EDFS), WunderGraph Cosmo has revolutionized the way developers handle real-time data in GraphQL federations. This innovative approach not only simplifies the implementation of subscriptions but also resolves many of the common problems associated with traditional methods.
 
 ![WunderGraph Cosmo Overview](/static/images/wundergraph/wundergraph_cosmo_EDFS.png)
 
 Whether you're grappling with subscription scalability issues, struggling with the complexities of real-time data in a distributed system, or simply looking to optimize your GraphQL federation, WunderGraph Cosmo offers a compelling solution that promises to streamline your development process and enhance your API's real-time capabilities.
 
 ## Understanding Event-Driven Federated Subscriptions (EDFS)
+Event-Driven Federated Subscriptions (EDFS) represent a significant advancement in GraphQL federation, addressing the challenges of real-time data in distributed systems. EDFS enables efficient management of subscriptions across federated services, allowing for seamless real-time updates in complex, distributed architectures.
 
-Event-Driven Federated Subscriptions (EDFS) represent a significant advancement in GraphQL federation, addressing the challenges of real-time data in distributed systems. WunderGraph Cosmo introduces EDFS as a solution to manage subscriptions across federated services efficiently.
+WunderGraph Cosmo introduces a robust implementation of EDFS that tackles three common problems associated with traditional GraphQL subscriptions in federated environments:
 
-Unlike traditional GraphQL subscriptions, EDFS in WunderGraph Cosmo offers:
+1. **Single Root Field Limitation**: Traditionally, GraphQL subscriptions are restricted to having only one root field. This limitation can lead to overly complex subscription queries and reduced flexibility.
 
-1. Improved scalability for federated architectures
-2. Reduced latency in real-time data delivery
-3. Enhanced flexibility in managing distributed data sources
+   **Cosmo's Solution**: Cosmo's EDFS implementation allows for multiple root fields in a single subscription, enabling more flexible and intuitive real-time data fetching across federated services.
 
+2. **Stateful Subgraphs**: In many GraphQL federations, maintaining stateful subgraphs for subscriptions can lead to increased complexity and potential scalability issues.
+
+   **Cosmo's Solution**: Cosmo's approach promotes stateless subgraphs. By leveraging a centralized event broker (NATS), Cosmo allows subgraphs to remain stateless while still participating in real-time data updates, improving scalability and simplifying subgraph management.
+
+3. **Resource-Intensive WebSocket Connections**: Traditional implementations often require maintaining multiple WebSocket connections per client, leading to increased resource consumption and potential performance bottlenecks.
+
+   **Cosmo's Solution**: Cosmo optimizes connection management by using a single WebSocket connection per client for all subscriptions. This approach significantly reduces resource usage and improves overall system efficiency.
+   
 For a detailed explanation of EDFS, refer to the [WunderGraph Cosmo documentation](https://cosmo-docs.wundergraph.com/router/event-driven-federated-subscriptions-edfs).
 
 ![Event-Driven Federated Subscriptions](/static/images/wundergraph/Event-Driven_Federated_Subscriptions_(EDFS).avif)
