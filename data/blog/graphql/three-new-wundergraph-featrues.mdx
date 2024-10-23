@@ -21,14 +21,52 @@ In collaborative development environments, clear and early visibility of code ch
 **How It Works:** Supergraph Previews allow developers to generate a fully functional preview of the proposed changes in a pull request. This means team members can see and interact with updates before they are merged into the main branch. The ability to validate changes in a real-world scenario reduces integration issues and fosters smoother collaboration. According to the [Supergraph Previews tutorial](https://cosmo-docs.wundergraph.com/tutorial/supergraph-previews-for-every-pull-request), this feature integrates seamlessly with your existing CI/CD pipelines, ensuring that the development flow is uninterrupted and efficient.
 
 **Benefits:**
-- **Streamlined Testing:** By previewing changes early, potential issues can be identified and resolved before they reach production.
-- **Enhanced Collaboration:** Teams no longer need to imagine how changes will integrate; they can see it in action.
+- **Streamlined Testing:** By previewing changes early, potential issues can be identified and resolved before they reach production. This early detection is crucial in maintaining the integrity of the codebase and ensuring high-quality releases.
+- **Enhanced Collaboration:** Teams no longer need to imagine how changes will integrate; they can see it in action, leading to more informed decision-making and better team alignment.
 
-![Diagram of the pull request workflow with Supergraph Previews integrated, showing before and after states](#)
+It's as simpel as creating a GitHub action such as below:
 
-Based on my own experience I can attest that this will save a lot of time and make testing much easier and faster.
+'''yaml
+name: Cosmo Previews
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - closed
+      - synchronize
 
-[Read More about Previews](https://cosmo-docs.wundergraph.com/tutorial/supergraph-previews-for-every-pull-request).
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened' || github.event.action == 'reopened'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.10.0
+          cache: npm
+
+      - name: Install wgc
+        run: npm i -g wgc@latest
+
+      - name: Create Cosmo Previews
+        uses: wundergraph/cosmo-previews@v0.1.0
+        with:
+          config_path: .github/cosmo.yaml
+          create: true
+          cosmo_api_key: ${{ secrets.COSMO_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+'''
+
+Based on my own experience, I can attest that this will save a lot of time and make testing much easier and faster.
+
+[Read More about Previews Here](https://cosmo-docs.wundergraph.com/tutorial/supergraph-previews-for-every-pull-request).
 
 ## Dynamic Management with Graph Feature Flags
 
