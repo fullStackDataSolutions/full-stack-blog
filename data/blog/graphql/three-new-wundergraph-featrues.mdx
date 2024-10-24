@@ -26,7 +26,7 @@ In collaborative development environments, clear and early visibility of code ch
 
 It's as simpel as creating a GitHub action such as below:
 
-'''yaml
+```yaml
 name: Cosmo Previews
 on:
   pull_request:
@@ -60,9 +60,9 @@ jobs:
         with:
           config_path: .github/cosmo.yaml
           create: true
-          cosmo_api_key: secrets.COSMO_API_KEY
-          github_token: secrets.GITHUB_TOKEN
-'''
+          cosmo_api_key: ${{ secrets.COSMO_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+```
 
 Based on my own experience, I can attest that this will save a lot of time and make testing much easier and faster.
 
