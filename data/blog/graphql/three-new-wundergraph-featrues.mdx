@@ -1,6 +1,6 @@
 ---
 title: 'An Inside Look at Three New WunderGraph Features for 2024'
-date: '2024-10-22'
+date: '2024-10-23'
 tags: ['graphql', 'WunderGraph', 'GraphQL management tools', 'Supergraph Previews', 'Graph Feature Flags', 'Graph Pruning']
 draft: false
 images: ['/static/images/wundergraph/man_working_with_wundergraph.png']
@@ -60,8 +60,8 @@ jobs:
         with:
           config_path: .github/cosmo.yaml
           create: true
-          cosmo_api_key: ${{ secrets.COSMO_API_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          cosmo_api_key: secrets.COSMO_API_KEY
+          github_token: secrets.GITHUB_TOKEN
 '''
 
 Based on my own experience, I can attest that this will save a lot of time and make testing much easier and faster.
