@@ -8,6 +8,7 @@ import YouTube from './YouTube'
 
 import Image from './Image'
 import CustomLink from './Link'
+import { AppyAiLink } from './AppyAiLink'
 
 export const Wrapper = ({ layout, content, ...rest }: MDXLayout) => {
   const Layout = require(`../layouts/${layout}`).default
@@ -15,6 +16,7 @@ export const Wrapper = ({ layout, content, ...rest }: MDXLayout) => {
 }
 
 export const MDXComponents: ComponentMap = {
+  AppyAiLink,
   Image,
   TOCInline,
   a: CustomLink,
